@@ -1,6 +1,6 @@
 package com.sample.listeners;
 
-import com.sample.constants.VeevaConnectorConstants;
+import com.sample.constants.SampleConnectorConstants;
 import com.sample.models.SampleConfigReader;
 import com.sample.models.SampleConfiguration;
 import com.sample.services.SampleConnectorSupportService;
@@ -41,7 +41,7 @@ import static javax.jcr.observation.Event.NODE_MOVED;
  * the resource url in corresponding Sample Document.
  */
 @Component(service = EventListener.class, immediate = true)
-public class SampleAssetOrPageMoveListener implements EventListener {
+public class SampleAEMAssetOrPageMoveListener implements EventListener {
 
     @Reference
     private SlingRepository repository;
@@ -65,7 +65,7 @@ public class SampleAssetOrPageMoveListener implements EventListener {
         ResourceResolver resourceResolver = SampleConnectorUtils
                 .getServiceResourceResolver(SampleConnectorConstants.Sample_AEM_SERVICE_USER,resolverFactory);
         if(resourceResolver==null){
-            LOG.error("Resource Resolver not found");
+            LOG.error("AEM service Resource Resolver not found");
             return;
         }
         while (eventIterator.hasNext()) {
